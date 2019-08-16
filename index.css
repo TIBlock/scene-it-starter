@@ -14,3 +14,34 @@ body {
 	margin-top: 20px;
 }
 
+.movies-container
+{
+	font-size: 2.5vw;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.movie
+{
+	margin-top: 1em;
+	display: flex;
+}
+
+.card_body
+{
+	display: flex;
+}
+
+.movie_title
+{
+	font-size: 1.4em;
+	flex:2;
+}
+.release_date
+{
+	background-color: gray;
+	color: white;
+	border-radius: 5px;
+	flex: 1;
+}
