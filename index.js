@@ -4,34 +4,40 @@ document.addEventListener('DOMContentLoaded',function()
     
     function renderMovies(movieArray)
     {
-        // console.log(movieArray.Year)
-        let movieHTML = movieArray.map(currentMovie);
-        
-        return movieHTML
-    }
-    
-    function currentMovie(movieInfo)
-    {
-        // console.log(movieInfo.Title)
-        return `
-        <div class="movie card" style="">
-        <img class="card-img-top movie_poster" src="${movieInfo.Poster}" alt="${movieInfo.Title}">
-        <div class="card-body">
-        <div class="movie_text">
-        <div class="card-text movie_title">${movieInfo.Title}</div>
-        <div class="card-text release_date">${movieInfo.Year}</div>
-        </div>
-        <a href="#" id='add_button' class="btn btn-primary">Add</a>
-        </div>
-        </div>
-        `
-    }
-    // let moviesContainer = document.getElementById('movies_container');
-    // moviesContainer.innerHTML = finalHTML.join('')    
+        let movieHTML = movieArray.map(function(currentMovie){
+            
+            return `
+            <div class="movie card" style="">
+            <img class="card-img-top movie_poster" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
+            <div class="card-body">
+            <div class="movie_text">
+            <div class="card-text movie_title">${currentMovie.Title}</div>
+            <div class="card-text release_date">${currentMovie.Year}</div>
+            </div>
+            <a href="#" id='add_button' class="btn btn-primary">Add</a>
+            </div>
+            </div>
+            `
+        });
 
+        return movieHTML.join("")
+    }
+   
+    let moviesContainer = document.getElementById('movies_container');
+    
     document.getElementById('search-form').addEventListener('submit', function(e){
         e.preventDefault();
-        let moviesContainer = document.getElementById('movies_container');
-        moviesContainer.innerHTML = finalHTML.join('')   
+        moviesContainer.innerHTML = finalHTML
     });
+
+
+    // document.getElementById('add_button').addEventListener('click',saveToWatchlist(`${movieData.imdbID}`));
+
+    // function saveToWatchlist(imdbID){
+    // console.log(imdbID.imdbID)    
+    // }
+
 });
+
+
+
