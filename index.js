@@ -26,21 +26,12 @@ document.addEventListener('DOMContentLoaded',function()
         </div>
         `
     }
+    // let moviesContainer = document.getElementById('movies_container');
+    // moviesContainer.innerHTML = finalHTML.join('')    
 
-
-
-    // console.log(finalHTML)
-    let moviesContainer = document.getElementById('movies_container');
-    console.log(moviesContainer)
-    moviesContainer.innerHTML = finalHTML.join('')    
+    document.getElementById('search-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        let moviesContainer = document.getElementById('movies_container');
+        moviesContainer.innerHTML = finalHTML.join('')   
+    });
 });
-
-
-// div class="movie card">
-//     <img class="card-img-top movie_poster" src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg alt="This is a picture of the release poster for the movie.">
-//     <div class="card-body">
-//         <div class="card-text movie_title">The Dark Knight</div>
-//         <div class="card-text release_date">2008</div>
-//     </div>
-//     <a href="#" class="btn btn-primary">Add</a>
-// </div>
