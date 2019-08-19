@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded',function()
             <div class="card-text movie_title">${currentMovie.Title}</div>
             <div class="card-text release_date">${currentMovie.Year}</div>
             </div>
-            <a onclick="saveToWatchlist(${currentMovie.imdbID})" id="add_button" class="btn btn-primary">Add</a>
+            <button data-movieid="${currentMovie.imdbID}" id="add_button" class="btn btn-primary">Add</b>
             </div>
             </div>
             `
@@ -23,14 +23,19 @@ document.addEventListener('DOMContentLoaded',function()
         
         return movieHTML.join("")
     }
+
+    let moviesContainer = getById('movies_container');
+    let movieSearchID = getById.('add_button');
    
-    let moviesContainer = document.getElementById('movies_container');
+    function getById(id){
+        return document.getElementById(id)
+    }
+
     
     document.getElementById('search-form').addEventListener('submit', function(e){
         e.preventDefault();
         moviesContainer.innerHTML = finalHTML
     });
-    
     
     function saveToWatchlist(imdbID){
         // imdbID.preventDefault();
