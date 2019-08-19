@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded',function()
 {
+    
     let finalHTML = renderMovies(movieData)
     
     function renderMovies(movieArray)
@@ -14,12 +15,12 @@ document.addEventListener('DOMContentLoaded',function()
             <div class="card-text movie_title">${currentMovie.Title}</div>
             <div class="card-text release_date">${currentMovie.Year}</div>
             </div>
-            <a href="#" id='add_button' class="btn btn-primary">Add</a>
+            <a onclick="saveToWatchlist(${currentMovie.imdbID})" id="add_button" class="btn btn-primary">Add</a>
             </div>
             </div>
             `
         });
-
+        
         return movieHTML.join("")
     }
    
@@ -29,6 +30,13 @@ document.addEventListener('DOMContentLoaded',function()
         e.preventDefault();
         moviesContainer.innerHTML = finalHTML
     });
+    
+    
+    function saveToWatchlist(imdbID){
+        // imdbID.preventDefault();
+        console.log("You saved a movie! ID" + imdbID)
+    
+    };
 
 
     // document.getElementById('add_button').addEventListener('click',saveToWatchlist(`${movieData.imdbID}`));
