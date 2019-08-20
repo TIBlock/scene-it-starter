@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded',function()
 {
-    
-    let finalHTML = renderMovies(movieData)
-    
+    let finalHTML = renderMovies(movieData);
     function renderMovies(movieArray)
     {
-        let movieHTML = movieArray.map(function(currentMovie){
-            
+        let movieHTML = movieArray.map(function(currentMovie)
+        { 
             return `
             <div class="movie card" style="">
                 <img class="card-img-top movie_poster" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
@@ -18,46 +16,55 @@ document.addEventListener('DOMContentLoaded',function()
                     <button data-movieid="${currentMovie.imdbID}" id="add_button" class="btn btn-primary">Add</b>
                 </div>
             </div>
-            `
-        });
-        
-        return movieHTML.join("")
+            `;
+        });        
+        return movieHTML.join("");
     }
-
+    
+    function getById(id)
+    {
+        return document.getElementById(id);
+    }
+    
     let moviesContainer = getById('movies_container');
-    // let movieSearchID = getById.('add_button');
-   
-    function getById(id){
-        return document.getElementById(id)
-    }
-
     
-    document.getElementById('search-form').addEventListener('submit', function(e){
+    document.getElementById('search-form').addEventListener('submit', function(e)
+    {
         e.preventDefault();
-        moviesContainer.innerHTML = finalHTML
+        moviesContainer.innerHTML = finalHTML;
     });
-    
-    
 });
     
-    // document.getElementById('add_button').addEventListener('click',saveToWatchlist(`${movieData.imdbID}`));
+function movieClickEvent(event)
+{
+    let targetEl = event.target;
+    let movieID = event.target.getAttribute("data-movieid");
+    if(targetEl.id === "add_button")
+    saveToWatchlist(movieID);
+}
+
+function saveToWatchlist(imdbID)
+{
+    // imdbID.preventDefault();
+    var movie = movieData.find(function(currentMovie)
+    {
+        return currentMovie.imdbID === imdbID;
+    });
     
-    // function saveToWatchlist(imdbID){
-        // console.log(imdbID.imdbID)    
-        // }
-        
-    
-    function saveToWatchlist(imdbID){
-        // imdbID.preventDefault();
-        console.log("You saved a movie! ID" + imdbID)
+    var watchListJSON = localStorage.getItem('watchlist');
+    var watchlist = JSON.parse(watchListJSON)
 
-
-    };
-
-    function movieClickEvent(event){
-        let targetEl = event.target
-        let movieID = event.target.getAttribute("data-movieid")
-        if(targetEl.id === "add_button")
-        saveToWatchlist(movieID)
+    if (watchlist === null)
+    {
+        watchlist = [];    
     }
 
+    watchlist.push(movie)
+    
+    watchListJSON = JSON.stringify(watchlist);
+    
+    localStorage.setItem('watchlist', watchListJSON);
+    
+    // console.log('watchlist null');
+    // console.dir(watchlist);
+};

@@ -72,3 +72,23 @@ body {
 	margin: .5em;
 	color: white;
 }
+
+.watchlist_container
+{
+	margin-top: 1em;
+}
+
+.goToWatchList
+{
+	margin-bottom: 0;
+	background-color: rgba(7, 106, 255, 0.541);
+	color: white;
+	padding: .8rem .6rem;
+	border-radius: .35rem;
+}
+
+.goToWatchList:hover
+{
+	color: white;
+	text-decoration: none;
+}
