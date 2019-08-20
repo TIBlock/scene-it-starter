@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded',function()
         moviesContainer.innerHTML = finalHTML;
     });
 });
-    
+
 function movieClickEvent(event)
 {
     let targetEl = event.target;
@@ -51,20 +51,22 @@ function saveToWatchlist(imdbID)
         return currentMovie.imdbID === imdbID;
     });
     
-    var watchListJSON = localStorage.getItem('watchlist');
-    var watchlist = JSON.parse(watchListJSON)
-
+    var watchlistJSON = localStorage.getItem('watchlist');
+    var watchlist = JSON.parse(watchlistJSON);
+    
     if (watchlist === null)
     {
         watchlist = [];    
     }
-
+    
     watchlist.push(movie)
     
     watchListJSON = JSON.stringify(watchlist);
     
-    localStorage.setItem('watchlist', watchListJSON);
+    localStorage.setItem('watchlist', watchlistJSON);
     
-    // console.log('watchlist null');
-    // console.dir(watchlist);
+    console.log('watchlist null');
+    console.dir(watchlist);
+    console.dir('watchlist')
+    console.log(localStorage.getItem('watchlist'))
 };
