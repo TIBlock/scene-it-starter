@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded',function()
 {
-    let finalHTML = renderMovies(movieData);
-    
     function renderMovies(movieArray)
     {
         let movieHTML = movieArray.map(function(currentMovie)
@@ -29,10 +27,19 @@ document.addEventListener('DOMContentLoaded',function()
     
     let moviesContainer = getById('movies_container');
     
+    //function used to get values from the search bar. 
     document.getElementById('search-form').addEventListener('submit', function(e)
     {
         e.preventDefault();
-        moviesContainer.innerHTML = finalHTML;
+        var searchString = document.getElementById('search-bar').value; //added ID so we could just search for .value
+        var urlEncodedSearchString = encodeURIComponent(searchString)
+        axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString).then(function(response)
+        {
+            let movieHTML = renderMovies(response.data.Search);
+            moviesContainer.innerHTML = movieHTML;
+
+            console.log(response.data);
+        });
     });
 });
 

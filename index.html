@@ -12,7 +12,7 @@
 	 crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="data.js"></script>
-	<script src="index.js" type="text/javascript"></script>
+	<script src="index.js"></script>
 	<link rel="stylesheet" href="index.css" />
 	<script></script>
 </head>
@@ -29,18 +29,16 @@
 			<div class="col-12 search">
 				<form id="search-form">
 					<div class="input-group input-group-lg">
-						<input class="form-control search-bar" placeholder="Search for a movie...">	
+						<input id="search-bar" class="form-control search-bar" placeholder="Search for a movie...">	
 						<button class="btn btn-primary input-group-btn" type="submit">Search</button>
 				    </div>
 				</form>
 			</div>
 		</div>
 		<div class="row watchlist_container">
-			<!-- <div class="col-4"></div> -->
 				<div class="col-12 text-center">
 					<a href="/watchlist.html" class="goToWatchList" onclick="watchlist.html">Go To Watchlist</a>
 				</div>
-			<!-- <div class="col-4.5"></div> -->
 		</div>
 		<div class="row">
 			<div class="col-12 results">
