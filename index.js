@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded',function()
 {
     let finalHTML = renderMovies(movieData);
+    
     function renderMovies(movieArray)
     {
         let movieHTML = movieArray.map(function(currentMovie)
@@ -45,7 +46,6 @@ function movieClickEvent(event)
 
 function saveToWatchlist(imdbID)
 {
-    // imdbID.preventDefault();
     var movie = movieData.find(function(currentMovie)
     {
         return currentMovie.imdbID === imdbID;
@@ -60,13 +60,9 @@ function saveToWatchlist(imdbID)
     }
     
     watchlist.push(movie)
+
+    console.log(watchlist);
     
-    watchListJSON = JSON.stringify(watchlist);
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
     
-    localStorage.setItem('watchlist', watchlistJSON);
-    
-    console.log('watchlist null');
-    console.dir(watchlist);
-    console.dir('watchlist')
-    console.log(localStorage.getItem('watchlist'))
 };

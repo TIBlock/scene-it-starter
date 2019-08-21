@@ -15,7 +15,9 @@
     <script src="index.js"></script>
     <script src="watchlist.js"></script>
 	<link rel="stylesheet" href="index.css" />
-	<script></script>
+	<script>
+		function clearList(){localStorage.clear();}
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -26,27 +28,29 @@
 			</div>
 		</div>
 		<div class="row watchlist_container">
-			<!-- <div class="col-4"></div> -->
-				<div class="col-12 text-center">
-                    <a href="/index.html" class="goToMovieList" onclick="watchlist.html">Go To Movie List</a>
-				</div>
-			<!-- <div class="col-4.5"></div> -->
+			<div class="col-2"></div>
+			<div class="col-8 text-center">
+				<a href="/index.html" class="goToMovieList" >Go To Movie List</a>
+			</div>
+			<div class="col-2 text-center">
+				<a onclick="clearList()" href="/watchlist.html" class="clearListButton">Clear List</a>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 results">
 
 				<!-- MOVIES SHOW UP HERE! -->
+
 				<div onclick="movieClickEvent(event)" id="movies_container" class="movies-container">
 				</div>
 
 			</div>
 
-			</div>
+		</div>
 		</div>
 
 	</div>
 
-
-	
 </body>
 </html>
+

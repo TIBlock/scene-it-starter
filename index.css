@@ -78,17 +78,25 @@ body {
 	margin-top: 1em;
 }
 
-.goToWatchList, .goToMovieList
+.goToWatchList, .goToMovieList,
+.clearListButton
 {
-	margin-bottom: 0;
+	display: inline-block;
 	background-color: rgba(7, 106, 255, 0.85);
 	color: white;
 	padding: .8rem .6rem;
 	border-radius: .35rem;
 }
 
-.goToWatchList:hover, .goToMovieList:hover
+.goToWatchList:hover, .goToMovieList:hover,
+.clearListButton:hover
 {
 	color: white;
 	text-decoration: none;
+}
+
+.emptyList
+{
+	margin-top: 3em;
+	font-size: 2.5em;
 }

@@ -1,13 +1,18 @@
 document.addEventListener('DOMContentLoaded',function()
 {
     var watchlistJSON = localStorage.getItem('watchlist');
+
     var watchlist = JSON.parse(watchlistJSON);
 
-    console.dir(watchlist)
-
     let finalHTML = renderMovies(watchlist);
+
     function renderMovies(movieArray)
     {
+        if (movieArray === null){
+            return `
+            <div class="col-12 text-center emptyList"><strong>Your List is Empty!</strong></div>
+            `
+        }
         let movieHTML = movieArray.map(function(currentMovie)
         { 
             return `
@@ -18,7 +23,6 @@ document.addEventListener('DOMContentLoaded',function()
                         <div class="card-text movie_title">${currentMovie.Title}</div>
                         <div class="card-text release_date">${currentMovie.Year}</div>
                     </div>
-                    <button data-movieid="${currentMovie.imdbID}" id="add_button" class="btn btn-primary">Add</b>
                 </div>
             </div>
             `;
@@ -32,7 +36,6 @@ document.addEventListener('DOMContentLoaded',function()
     }
     
     let moviesContainer = getById('movies_container');
-    
 
     moviesContainer.innerHTML = finalHTML;
 });
