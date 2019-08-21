@@ -51,9 +51,23 @@ function movieClickEvent(event)
     saveToWatchlist(movieID);
 }
 
+
 function saveToWatchlist(imdbID)
 {
-    var movie = movieData.find(function(currentMovie)
+    var searchString = imdbID //added ID so we could just search for .value
+        var urlEncodedSearchString = encodeURIComponent(searchString)
+        axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString).then(function(response)
+        {
+            let movieHTML = renderMovies(response.data.Search).find(function(currentMovie){  //need to find a way to input information from matching movie. Need to console.log what I have now so that I can tell if im actually pulling the same information.
+
+
+            });
+            moviesContainer.innerHTML = movieHTML;
+
+            console.log(response.data);
+        });
+
+    var movie = movieData.find(function(currentMovie) //need to change where it is pulling the imdbID so it can save movies to the watch list. 
     {
         return currentMovie.imdbID === imdbID;
     });
