@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded',function()
     {
         if (movieArray === null){
             return `
-            <div class="col-12 text-center emptyList"><strong>Your List is Empty!</strong></div>
+            <div class="col-12 text-center emptyList"><st>Your List is Empty!</strong></div>
             `
         }
         let movieHTML = movieArray.map(function(currentMovie)
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded',function()
                         <div class="card-text movie_title">${currentMovie.Title}</div>
                         <div class="card-text release_date">${currentMovie.Year}</div>
                     </div>
+                        
                 </div>
             </div>
             `;
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded',function()
     let moviesContainer = getById('movies_container');
 
     moviesContainer.innerHTML = finalHTML;
+    
 });
 
 

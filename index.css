@@ -26,7 +26,7 @@ body {
 {
 	margin-top: 1em;
 	display: flex;
-	max-width: 20em;
+	max-width: 19em;
 	max-height: 38em;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -56,12 +56,23 @@ body {
 .release_date
 {
 	font-size: 120%;
+	color: white;
+	border-radius: 5px;
+	flex:1;
+	min-height: 50%;
+	text-align: center;
+	flex-wrap: wrap;
+}
+
+.release-text
+{
+	font-size: 120%;
 	background-color: gray;
 	color: white;
 	border-radius: 5px;
 	flex:1;
 	text-align: center;
-	height: 1.4em;
+	flex-wrap: wrap;
 }
 
 #add_button
