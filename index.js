@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded',function()
         let movieHTML = movieArray.map(function(currentMovie)
         { 
             return `
+            <div class="glow">
             <div class="movie card" style="">
-                <img class="card-img-top movie_poster" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
+                <img class="card-img-top movie-poster" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
                 <div class="card-body">
                     <div class="movie_text">
                         <div class="card-text movie_title">${currentMovie.Title}</div>
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded',function()
                     </div>
                     <button data-movieid="${currentMovie.imdbID}" id="add_button" class="btn btn-primary">Add</b>
                 </div>
+            </div>
             </div>
             `;
         });        
@@ -35,24 +37,48 @@ document.addEventListener('DOMContentLoaded',function()
         e.preventDefault();
         var searchString = document.getElementById('search-bar').value; //added ID so we could just search for .value
         var urlEncodedSearchString = encodeURIComponent(searchString)
-        axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString).then(function(response)
+        axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString + "&page=" + 3).then(function(response)
         {
             saveMovies = response.data.Search;
             let movieHTML = renderMovies(saveMovies);
             moviesContainer.innerHTML = movieHTML;
-
+            
         });
+        
+        function movieContainerLoad()
+        {
+            return document.getElementById("page-button-next").style.visibility = "visible";
+        };
+
+        $('#movies_container').load("index.html", movieContainerLoad());
+
     });
 });
 
+// function movieIframe(imdbID){
+//     console.log(imdbID);
+//     let iframe = event.target.getAttribute("data-movieid");
+//     if(targetEl.id === "movie-poster")
+//     document.
+//     // window.open("https://www.imdb.com/title/" + imdbID, "_blank");
 
+// }
 
 function movieClickEvent(event)
 {
+    event.stopPropagation();
     let targetEl = event.target;
+    console.dir(targetEl)
     let movieID = event.target.getAttribute("data-movieid");
     if(targetEl.id === "add_button")
     saveToWatchlist(movieID);
+}
+
+function movieIframe(imdbID){
+    console.log(imdbID);
+    document.getElementById()
+    // window.open("https://www.imdb.com/title/" + imdbID, "_blank");
+
 }
 
 function saveToWatchlist(imdbID)

@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded',function()
                         <div class="card-text movie_title">${currentMovie.Title}</div>
                         <div class="card-text release_date">${currentMovie.Year}</div>
                     </div>
-                        
                 </div>
             </div>
             `;
