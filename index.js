@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded',function()
         let movieHTML = movieArray.map(function(currentMovie)
         { 
             return `
+            <div hidden data-movieid="${currentMovie.imdbID}class="imdbIframe">
+			<iframe src="https://www.imdb.com/title/" + ${currentMovie.imdbID}></iframe>
+			</div>
             <div class="glow">
             <div class="movie card" style="">
                 <img class="card-img-top movie-poster" src="${currentMovie.Poster}" alt="${currentMovie.Title}">
@@ -37,21 +40,13 @@ document.addEventListener('DOMContentLoaded',function()
         e.preventDefault();
         var searchString = document.getElementById('search-bar').value; //added ID so we could just search for .value
         var urlEncodedSearchString = encodeURIComponent(searchString)
-        axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString + "&page=" + 3).then(function(response)
+        axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + urlEncodedSearchString).then(function(response)
         {
             saveMovies = response.data.Search;
             let movieHTML = renderMovies(saveMovies);
             moviesContainer.innerHTML = movieHTML;
-            
+
         });
-        
-        function movieContainerLoad()
-        {
-            return document.getElementById("page-button-next").style.visibility = "visible";
-        };
-
-        $('#movies_container').load("index.html", movieContainerLoad());
-
     });
 });
 
